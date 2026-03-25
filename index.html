@@ -1,1 +1,89 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BV System - Gestão Comercial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 flex h-screen">
+
+    <aside class="w-64 bg-[#0a1931] text-white flex flex-col transition-all duration-300">
+        <div class="p-6 text-xl font-bold border-b border-gray-700 text-center">
+            BV SYSTEM
+        </div>
+        <nav class="flex-1 mt-4">
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-600 transition" onclick="loadPage('estoque')">
+                <i class="fas fa-boxes mr-3"></i> Estoque
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-600 transition" onclick="loadPage('clientes')">
+                <i class="fas fa-users mr-3"></i> Clientes
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-600 transition" onclick="loadPage('financeiro')">
+                <i class="fas fa-hand-holding-usd mr-3"></i> Financeiro
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-600 transition" onclick="loadPage('nfe')">
+                <i class="fas fa-file-invoice-dollar mr-3"></i> NF-e (Mod 55)
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-600 transition" onclick="loadPage('config')">
+                <i class="fas fa-cog mr-3"></i> Configurações
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-8">
+            <h2 id="page-title" class="text-xl font-semibold text-gray-700">Dashboard</h2>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm text-gray-500">Usuário: Victor Torquato</span>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">+ Novo Registro</button>
+            </div>
+        </header>
+
+        <section id="content-area" class="p-8 overflow-y-auto">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-lg mb-4">Bem-vindo ao sistema de gestão. Selecione um menu lateral.</h3>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-sm font-medium text-gray-600 border-b">
+                            <th class="py-3">Identificador</th>
+                            <th class="py-3">Cliente</th>
+                            <th class="py-3">Situação</th>
+                            <th class="py-3">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-gray-700">
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3">APWLYG-S</td>
+                            <td class="py-3">SAVANA COMERCIO DE PRODUTOS</td>
+                            <td class="py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Concluída</span></td>
+                            <td class="py-3"><i class="fas fa-edit text-blue-500 cursor-pointer"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function loadPage(page) {
+            const title = document.getElementById('page-title');
+            const content = document.getElementById('content-area');
+            
+            // Lógica simples de troca de títulos e conteúdo
+            const pages = {
+                'estoque': 'Gestão de Estoque (NCM / SEFAZ)',
+                'clientes': 'Cadastro de Clientes',
+                'financeiro': 'Contas a Pagar e Receber',
+                'nfe': 'Emissão de NF-e Modelo 55',
+                'config': 'Configurações do Emitente'
+            };
+            
+            title.innerText = pages[page];
+            // Aqui você faria o fetch(pages/page.html) futuramente
+        }
+    </script>
+</body>
+</html>
